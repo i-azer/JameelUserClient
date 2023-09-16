@@ -1,0 +1,69 @@
+
+  <section>
+    <div class="container">
+     <div class="row" style="margin-top: 5%;">
+      <div class="col-md-12" style="text-align: center; margin: 5%;">
+       <h2>Jameel Users</h2>
+      </div>
+      <div class="col-md-6">
+       <div class="card p-4 shadow-sm">
+        <form #myform="ngForm" (ngSubmit)="addNewUser(myform)">
+         <div class="form-group">
+          <label for="name">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            ngModel
+            name="firstName"
+            id="firstName"
+            aria-describedby="firstName"
+            required/>
+         </div>
+         <div class="form-group">
+         <label for="name">Last Name</label>
+         <input
+           type="text"
+           class="form-control"
+           ngModel
+           name="lastName"
+           id="lastName"
+           aria-describedby="lastName"/>
+        </div>
+         <div class="form-group">
+          <label for="title">Date Of Birth</label>
+          <dp-date-picker name="dateOfBirth" [config]="datePickerConfig" [(ngModel)]="selectedDate"></dp-date-picker>
+         </div>
+         <div class="form-group">
+          <label for="name">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            ngModel
+            name="phoneNumber"
+            id="phoneNumber"
+            aria-describedby="phoneNumber"/>
+         </div>
+         <div class="form-group">
+          <label for="name">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            ngModel
+            name="address"
+            id="address"
+            aria-describedby="address"/>
+         </div>
+         <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+       </div>
+      </div>
+      <div class="col-md-6">
+       <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of users$ | async">
+         {{user.firstName}} <b>{{user.lastName}} </b>{{user.dateOfBirth}}<b>{{user.phoneNumber}} </b>{{user.address}}
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </section>
